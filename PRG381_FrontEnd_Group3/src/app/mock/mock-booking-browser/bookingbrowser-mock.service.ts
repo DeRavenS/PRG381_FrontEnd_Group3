@@ -51,11 +51,13 @@ export class BookingbrowserMockService {
       })
     }
 
+    let pagecount=allItems.length/request.browseRequest.itemPerPage;
     return of<ListResponse<IBrowsedBooking>>({
       items: filteredItems,
       page: request.browseRequest.page,
       itemsPerPage:request.browseRequest.itemPerPage,
       totalItems: allItems.length,
+      pageCount: pagecount,
     }).pipe(
       concatMap(item => of(item).pipe(delay(1000)))
     );

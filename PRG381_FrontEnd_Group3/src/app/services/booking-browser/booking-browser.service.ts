@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 
 export interface IBrowseBookingRequest{
   bookingID?:number,
-  userID:string,
+  userID?:string,
   browseRequest:IBrowseRequest,
   startDate?: Date,
   endDate?: Date,
@@ -37,14 +37,24 @@ export class BookingBrowserService implements IBookingBrowserService{
   constructor(private http:HttpClient) { }
   
   getBookings(request: IBrowseBookingRequest): Observable<ListResponse<IBrowsedBooking>>{   
-     return this.http.post<ListResponse<IBrowsedBooking>>(
-      this.API_URL,
-      request,
-      {
-        headers:{
-          "auth-userID":request.userID
-        }
-      });
+    if (request.userID) {
+      return this.http.post<ListResponse<IBrowsedBooking>>(
+        this.API_URL,
+        request,
+        {
+          headers:{
+            "auth-userID":request.userID
+          }
+        });
+    }
+    else
+    {
+      return this.http.post<ListResponse<IBrowsedBooking>>(
+        this.API_URL,
+        request
+        );
+    }
+     
   }
 
 }
