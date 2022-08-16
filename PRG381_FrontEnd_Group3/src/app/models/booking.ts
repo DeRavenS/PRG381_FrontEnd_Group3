@@ -1,3 +1,4 @@
+import { IShipment } from "./shipment-interface";
 import { ITheme } from "./theme-interface";
 import { IUser } from "./user-interface";
 import { IVenue } from "./venue-interface";
@@ -10,5 +11,6 @@ export interface IBooking{
     theme: ITheme,
     adults: number,
     children: number,
-    venue:IVenue
+    venue:IVenue,
+    shipment:IShipment
 }
