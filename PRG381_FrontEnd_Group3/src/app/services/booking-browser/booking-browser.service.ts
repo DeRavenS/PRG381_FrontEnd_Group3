@@ -23,9 +23,16 @@ export interface IBrowseBookingRequest{
   maxCosts?: number,
   confirmed?: Boolean
 }
+
+export interface IDeleteBookingRequest{
+  bookingID:number;
+}
 export interface IBookingBrowserService {
   getBookings(request:IBrowseBookingRequest):Observable<ListResponse<IBrowsedBooking>>;
+  deleteBooking(request:IDeleteBookingRequest):Observable<Object>;
 }
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +62,9 @@ export class BookingBrowserService implements IBookingBrowserService{
         );
     }
      
+  }
+  deleteBooking(request: IDeleteBookingRequest): Observable<Object> {
+      return this.http.delete<object>(this.API_URL)
   }
 
 }

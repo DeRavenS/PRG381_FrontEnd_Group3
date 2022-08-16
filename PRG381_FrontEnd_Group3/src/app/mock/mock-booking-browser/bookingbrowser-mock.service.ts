@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { concatMap, delay, Observable, of } from 'rxjs';
 import { IBrowsedBooking } from 'src/app/models/browsed-booking';
 import { ListResponse } from 'src/app/models/list-repsponse-interface';
-import { IBrowseBookingRequest } from 'src/app/services/booking-browser/booking-browser.service';
+import { IBookingBrowserService, IBrowseBookingRequest, IDeleteBookingRequest } from 'src/app/services/booking-browser/booking-browser.service';
 import { getBrowsedBookingMock } from '../bookingMock';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookingbrowserMockService {
+export class BookingbrowserMockService implements IBookingBrowserService{
 
   constructor() { }
   getBookings(request: IBrowseBookingRequest): Observable<ListResponse<IBrowsedBooking>> {
@@ -62,4 +62,10 @@ export class BookingbrowserMockService {
       concatMap(item => of(item).pipe(delay(1000)))
     );
   }
+
+deleteBooking(request: IDeleteBookingRequest): Observable<Object> {
+    return of<object>(
+      getBrowsedBookingMock()
+    );
+}
 }

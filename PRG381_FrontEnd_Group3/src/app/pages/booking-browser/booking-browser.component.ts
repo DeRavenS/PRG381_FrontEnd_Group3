@@ -68,7 +68,7 @@ export class BookingBrowserComponent implements OnInit {
   }
 
   load(pageEvent?:PageEvent) {
-
+    this.deleteBooking();
     this.busy = true
     let browseBookingRequest:IBrowseBookingRequest
     if (pageEvent) {
@@ -98,6 +98,10 @@ export class BookingBrowserComponent implements OnInit {
   getBooking(bookingID:string){
     console.log(bookingID)
     this.router.navigate([`/view/booking`],{queryParams:{bookingid:bookingID}})
+  }
+
+  deleteBooking(){
+    console.log(this.browseBookingExplorer.deleteBooking({bookingID:1}));
   }
 
 }

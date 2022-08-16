@@ -67,7 +67,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule
   ],
   providers: [
-    {provide: BookingBrowserService,useClass: BookingbrowserMockService} 
+    {provide: BookingBrowserService,useClass: BookingbrowserMockService}
   ],
   bootstrap: [AppComponent]
 })
