@@ -31,12 +31,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentBrowserComponent
+    StudentBrowserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

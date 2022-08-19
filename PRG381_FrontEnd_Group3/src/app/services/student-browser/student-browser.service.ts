@@ -14,6 +14,7 @@ export interface IStudentBrowseRequest extends IBrowseRequest{
 export interface IDeleteStudentRequest{
   studentID:number;
 }
+
 export interface IStudentManagementService {
   getStudents(request:IStudentBrowseRequest):Observable<PagedResponse<IBRowsedStudent>>;
   deleteStudents(request:IDeleteStudentRequest):Observable<Object>;
