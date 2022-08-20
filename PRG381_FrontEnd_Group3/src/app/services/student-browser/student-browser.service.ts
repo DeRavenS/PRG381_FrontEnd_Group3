@@ -7,9 +7,8 @@ import {  PagedResponse } from 'src/app/models/paged-response-interface';
 import { IDetialedStudent } from 'src/app/models/student-interface';
 import { environment } from 'src/environments/environment';
 
-
+//request models for various student services
 export interface IStudentBrowseRequest extends IBrowseRequest{
-
 }
 
 export interface IDeleteStudentRequest{
@@ -20,10 +19,13 @@ export interface IStudentDetailsRequest{
   studentID: string;
 }
 
+export interface IUpdateStudentRequest extends IDetialedStudent{}
+//interface of service responsible for managing students
 export interface IStudentManagementService {
   getStudents(request:IStudentBrowseRequest):Observable<PagedResponse<IBRowsedStudent>>;
   deleteStudents(request:IDeleteStudentRequest):Observable<Object>;
   studentDetails(request:IStudentDetailsRequest):Observable<IDetialedStudent>;
+  updateStudent(request:IUpdateStudentRequest):Observable<Object>;
 }
 
 
@@ -56,6 +58,10 @@ export class StudentManagementService implements IStudentManagementService{
     let params = new HttpParams
     params.set("studentID",request.studentID)
     return this.http.get<IDetialedStudent>(this.API_URL,{params:params})
+  }
+
+  updateStudent(request: IUpdateStudentRequest): Observable<Object> {
+      return this.http.patch<Object>(this.API_URL,request)
   }
 
 }

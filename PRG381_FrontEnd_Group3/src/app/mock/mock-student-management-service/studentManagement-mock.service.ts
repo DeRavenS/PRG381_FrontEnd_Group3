@@ -3,7 +3,7 @@ import { concatMap, delay, Observable, of } from 'rxjs';
 import { IBRowsedStudent } from 'src/app/models/browsed-student';
 import { PagedResponse } from 'src/app/models/paged-response-interface';
 import { IDetialedStudent } from 'src/app/models/student-interface';
-import {IDeleteStudentRequest, IStudentBrowseRequest, IStudentDetailsRequest, IStudentManagementService } from 'src/app/services/student-browser/student-browser.service';
+import {IDeleteStudentRequest, IStudentBrowseRequest, IStudentDetailsRequest, IStudentManagementService, IUpdateStudentRequest } from 'src/app/services/student-browser/student-browser.service';
 import { getBrowsedBookingMock } from '../browsedStudentMock';
 import { getDetailedStudentMock } from '../detailedStudentMock';
 
@@ -71,5 +71,9 @@ studentDetails(request: IStudentDetailsRequest): Observable<IDetialedStudent> {
     return of<IDetialedStudent>(
       getDetailedStudentMock({studentID:request.studentID})
     )
+}
+
+updateStudent(request: IUpdateStudentRequest): Observable<Object> {
+    return of<object>()
 }
 }
