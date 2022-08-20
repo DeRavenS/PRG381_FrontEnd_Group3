@@ -19,7 +19,11 @@ export interface IStudentDetailsRequest{
   studentID: string;
 }
 
-export interface IUpdateStudentRequest extends IDetialedStudent{}
+export interface IUpdateStudentRequest {
+  students:IDetialedStudent[]
+}
+
+
 //interface of service responsible for managing students
 export interface IStudentManagementService {
   getStudents(request:IStudentBrowseRequest):Observable<PagedResponse<IBRowsedStudent>>;
@@ -27,8 +31,6 @@ export interface IStudentManagementService {
   studentDetails(request:IStudentDetailsRequest):Observable<IDetialedStudent>;
   updateStudent(request:IUpdateStudentRequest):Observable<Object>;
 }
-
-
 
 @Injectable({
   providedIn: 'root'
