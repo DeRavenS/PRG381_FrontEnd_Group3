@@ -24,4 +24,5 @@ table {
   
   .tblRow:hover{
     background-color: gainsboro;
+    cursor: pointer;
   }

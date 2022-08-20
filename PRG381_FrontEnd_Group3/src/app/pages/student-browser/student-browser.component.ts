@@ -67,7 +67,7 @@ export class StudentBrowserComponent implements OnInit {
 
   getStudent(studentID:string){
     console.log(studentID)
-    this.router.navigate([`/view/student`],{queryParams:{bookingid:studentID}})
+    this.router.navigate([`/students/details`],{queryParams:{bookingID:studentID}});
   }
 
 }
