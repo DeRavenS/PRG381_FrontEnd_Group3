@@ -54,14 +54,14 @@ export class StudentBrowserComponent implements OnInit {
     this.studentManagementService.getStudents(browseStudentRequest).subscribe((val) => {
       if (val) {
         this.busy = false
+        console.log(val)
+        this.paginator.page = val.page
+        this.paginator.itemsPerPage = val.itemsPerPage
+        this.paginator.totalItems=val.totalItems
+        this.paginator.pageCount=val.pageCount
+        this.ELEMENT_DATA = val
+        this.dataSource = this.ELEMENT_DATA.items
       }
-      console.log(val)
-      this.paginator.page = val.page
-      this.paginator.itemsPerPage = val.itemsPerPage
-      this.paginator.totalItems=val.totalItems
-      this.paginator.pageCount=val.pageCount
-      this.ELEMENT_DATA = val
-      this.dataSource = this.ELEMENT_DATA.items
     })
   }
 

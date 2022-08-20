@@ -69,7 +69,7 @@ import { StudentDetailsPageComponent } from './pages/student-details-page/studen
     MatTooltipModule
   ],
   providers: [
-    {provide: StudentManagementService,useClass: StudentManagementMockService},
+    {provide: StudentManagementService,useClass: StudentManagementService},
   ],
   bootstrap: [AppComponent]
 })

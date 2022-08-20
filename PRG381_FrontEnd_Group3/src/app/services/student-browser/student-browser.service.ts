@@ -32,7 +32,7 @@ export interface IStudentManagementService {
   providedIn: 'root'
 })
 export class StudentManagementService implements IStudentManagementService{
-  API_URL:string = `${environment.api_url}/students`
+  API_URL:string = `${environment.api_url}/student`
   
 
   constructor(private http:HttpClient) { }
