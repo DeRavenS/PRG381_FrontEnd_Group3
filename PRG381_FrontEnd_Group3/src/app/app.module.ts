@@ -31,12 +31,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { StudentDetailsPageComponent } from './pages/student-details-page/student-details-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentBrowserComponent
+    StudentBrowserComponent,
+    StudentDetailsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule
   ],
   providers: [
-    {provide: StudentManagementService,useClass: StudentManagementMockService}
+    {provide: StudentManagementService,useClass: StudentManagementMockService},
   ],
   bootstrap: [AppComponent]
 })
