@@ -8,7 +8,7 @@ import { StudentManagementService } from './services/student-browser/student-bro
 import { StudentManagementMockService } from './mock/mock-student-management-service/studentManagement-mock.service';
 import { StudentBrowserComponent } from './pages/student-browser/student-browser.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -23,7 +23,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
-import { MatDialogContent, MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -31,12 +31,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { StudentDetailsPageComponent } from './pages/student-details-page/student-details-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentBrowserComponent
+    StudentBrowserComponent,
+    StudentDetailsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule
   ],
   providers: [
-    {provide: StudentManagementService,useClass: StudentManagementMockService}
+    {provide: StudentManagementService,useClass: StudentManagementMockService},
   ],
   bootstrap: [AppComponent]
 })

@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { concatMap, delay, Observable, of } from 'rxjs';
 import { IBRowsedStudent } from 'src/app/models/browsed-student';
 import { PagedResponse } from 'src/app/models/paged-response-interface';
-import {IDeleteStudentRequest, IStudentBrowseRequest, IStudentManagementService } from 'src/app/services/student-browser/student-browser.service';
+import { IDetialedStudent } from 'src/app/models/student-interface';
+import {IDeleteStudentRequest, IStudentBrowseRequest, IStudentDetailsRequest, IStudentManagementService } from 'src/app/services/student-browser/student-browser.service';
 import { getBrowsedBookingMock } from '../browsedStudentMock';
+import { getDetailedStudentMock } from '../detailedStudentMock';
 
 @Injectable({
   providedIn: 'root'
@@ -63,5 +65,11 @@ export class StudentManagementMockService implements IStudentManagementService{
     return of<object>(
       getBrowsedBookingMock()
     );
+}
+
+studentDetails(request: IStudentDetailsRequest): Observable<IDetialedStudent> {
+    return of<IDetialedStudent>(
+      getDetailedStudentMock({studentID:request.studentID})
+    )
 }
 }
