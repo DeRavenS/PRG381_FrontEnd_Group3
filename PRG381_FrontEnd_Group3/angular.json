@@ -68,7 +68,8 @@
               "browserTarget": "PRG381_FrontEnd_Group3:build:production"
             },
             "development": {
-              "browserTarget": "PRG381_FrontEnd_Group3:build:development"
+              "browserTarget": "PRG381_FrontEnd_Group3:build:development",
+              "proxyConfig":"src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -99,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookingBrowserComponent } from './pages/booking-browser/booking-browser.component';
+import { CourseBrowserComponent } from './pages/course-browser/course-browser.component';
+import { StudentBrowserComponent } from './pages/student-browser/student-browser.component';
+import { StudentDetailsPageComponent } from './pages/student-details-page/student-details-page.component';
 
 const routes: Routes = [
   {
-    path:'bookings',component:BookingBrowserComponent
+    path:'students',component:StudentBrowserComponent
+  },
+  {
+    path:'courses',component:CourseBrowserComponent
+  },
+  {
+    path: 'students/details',component:StudentDetailsPageComponent
   }
 ];
 

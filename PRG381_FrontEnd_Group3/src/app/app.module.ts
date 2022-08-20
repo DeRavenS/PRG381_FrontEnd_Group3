@@ -4,11 +4,11 @@ import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BookingBrowserService } from './services/booking-browser/booking-browser.service';
-import { BookingbrowserMockService } from './mock/mock-booking-browser/bookingbrowser-mock.service';
-import { BookingBrowserComponent } from './pages/booking-browser/booking-browser.component';
+import { StudentManagementService } from './services/student-browser/student-browser.service';
+import { StudentManagementMockService } from './mock/mock-student-management-service/studentManagement-mock.service';
+import { StudentBrowserComponent } from './pages/student-browser/student-browser.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -23,7 +23,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
-import { MatDialogContent, MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -31,12 +31,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { StudentDetailsPageComponent } from './pages/student-details-page/student-details-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookingBrowserComponent
+    StudentBrowserComponent,
+    StudentDetailsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule
   ],
   providers: [
-    {provide: BookingBrowserService,useClass: BookingbrowserMockService} 
+    {provide: StudentManagementService,useClass: StudentManagementMockService},
   ],
   bootstrap: [AppComponent]
 })
