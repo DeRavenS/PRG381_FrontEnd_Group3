@@ -8,7 +8,7 @@ import { StudentManagementService } from './services/student-browser/student-bro
 import { StudentManagementMockService } from './mock/mock-student-management-service/studentManagement-mock.service';
 import { StudentBrowserComponent } from './pages/student-browser/student-browser.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -23,7 +23,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
-import { MatDialogContent, MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
