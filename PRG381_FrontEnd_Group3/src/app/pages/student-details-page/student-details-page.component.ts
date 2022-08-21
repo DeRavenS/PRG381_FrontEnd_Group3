@@ -66,8 +66,5 @@ export class StudentDetailsPageComponent implements OnInit {
   removeChip(course:String){
     this.student.courses.splice(this.student.courses.indexOf(course),1)
   }
-  editFields(){
-   this.form.disabled = false;
-  }
 
 }

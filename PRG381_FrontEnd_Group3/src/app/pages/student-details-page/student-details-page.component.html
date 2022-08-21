@@ -1,34 +1,37 @@
-<mat-card class="container">
-    <mat-card-header class="jCentre">
-        <h1>Student Details</h1>
-    </mat-card-header>
-    <mat-card-content class="jCentre">
-            <mat-form-field  appearance="outline" class="wFull" >
-                <mat-label >Student Number</mat-label>
-                <input name="snumber" [disabled]="true" matInput [(ngModel)]="student.studentID">
-            </mat-form-field><br>
-            <mat-form-field appearance="outline" class="wFull">
-                <mat-label>Name</mat-label>
-                <input matInput [(ngModel)]="student.studentName">
-            </mat-form-field><br>
-            <mat-form-field appearance="outline" class="wFull">
-                <mat-label>E-Mail</mat-label>
-                <input matInput [(ngModel)]="student.studentEmail"> 
-            </mat-form-field><br>
-            <mat-form-field appearance="outline" class="wFull">  
-                <mat-label >Address</mat-label>
-                <input matInput [(ngModel)]="student.studentAddress">
-            </mat-form-field><br>
-            <div align="left">
-                <mat-label align="left">Courses</mat-label>
-                <mat-chip-list>
-                    <mat-chip *ngFor="let course of student.courses" (removed)="removeChip(course)"> {{course}} <button matChipRemove><mat-icon>cancel</mat-icon></button></mat-chip>
-                </mat-chip-list>     
-            </div>          
-        
-    </mat-card-content>
-    <mat-card-actions class="jCentre">
-        <button mat-button (click)="resetInfo()">Reset</button>
-        <button mat-button (click)="saveInfo(student)">Save Information</button>
-    </mat-card-actions>
-</mat-card>
+<body>
+    <mat-card class="container">
+        <mat-card-header class="jCentre">
+            <h1>Student Details</h1>
+        </mat-card-header>
+        <mat-card-content class="jCentre">
+                <mat-form-field  appearance="outline" class="wFull" >
+                    <mat-label >Student Number</mat-label>
+                    <input name="snumber" [disabled]="true" matInput [(ngModel)]="student.studentID">
+                </mat-form-field><br>
+                <mat-form-field appearance="outline" class="wFull">
+                    <mat-label>Name</mat-label>
+                    <input matInput [(ngModel)]="student.studentName">
+                </mat-form-field><br>
+                <mat-form-field appearance="outline" class="wFull">
+                    <mat-label>E-Mail</mat-label>
+                    <input matInput [(ngModel)]="student.studentEmail"> 
+                </mat-form-field><br>
+                <mat-form-field appearance="outline" class="wFull">  
+                    <mat-label >Address</mat-label>
+                    <input matInput [(ngModel)]="student.studentAddress">
+                </mat-form-field><br>
+                <div align="left">
+                    <mat-label align="left">Courses</mat-label>
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let course of student.courses" (removed)="removeChip(course)"> {{course}} <button matChipRemove><mat-icon>cancel</mat-icon></button></mat-chip>
+                    </mat-chip-list>     
+                </div>          
+            
+        </mat-card-content>
+        <mat-card-actions class="jCentre">
+            <button class="resetBut"  mat-button (click)="resetInfo()">Reset</button>
+            <button class="loginBut" mat-button (click)="saveInfo(student)">Save Information</button>
+        </mat-card-actions>
+    </mat-card>
+</body>
+
