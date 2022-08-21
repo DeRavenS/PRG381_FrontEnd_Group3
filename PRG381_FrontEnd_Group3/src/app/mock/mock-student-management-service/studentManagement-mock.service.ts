@@ -74,6 +74,6 @@ studentDetails(request: IStudentDetailsRequest): Observable<IDetialedStudent> {
 }
 
 updateStudent(request: IUpdateStudentRequest): Observable<Object> {
-    return of<object>()
+    return of<object>(request)
 }
 }

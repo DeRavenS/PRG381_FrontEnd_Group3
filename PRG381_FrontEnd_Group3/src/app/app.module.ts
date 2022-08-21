@@ -8,7 +8,7 @@ import { StudentManagementService } from './services/student-browser/student-bro
 import { StudentManagementMockService } from './mock/mock-student-management-service/studentManagement-mock.service';
 import { StudentBrowserComponent } from './pages/student-browser/student-browser.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -66,7 +66,8 @@ import { StudentDetailsPageComponent } from './pages/student-details-page/studen
     MatBadgeModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule
   ],
   providers: [
     {provide: StudentManagementService,useClass: StudentManagementMockService},
