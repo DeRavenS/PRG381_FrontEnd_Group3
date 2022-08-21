@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CourseBrowserComponent } from './pages/course-browser/course-browser.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { StudentBrowserComponent } from './pages/student-browser/student-browser.component';
 
 const routes: Routes = [
@@ -9,7 +10,7 @@ const routes: Routes = [
     path:'students',component:StudentBrowserComponent
   },
   {
-    path:'register',component:StudentBrowserComponent
+    path:'register',component:RegisterComponent
   },
   {
     path:'courses',component:CourseBrowserComponent
