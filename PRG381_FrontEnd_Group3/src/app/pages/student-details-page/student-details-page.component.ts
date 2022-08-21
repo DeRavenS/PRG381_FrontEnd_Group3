@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { IDetialedStudent } from 'src/app/models/student-interface';
 import { IStudentDetailsRequest, IUpdateStudentRequest, StudentManagementService } from 'src/app/services/student-browser/student-browser.service';
+
+
 
 @Component({
   selector: 'app-student-details-page',
@@ -9,6 +11,8 @@ import { IStudentDetailsRequest, IUpdateStudentRequest, StudentManagementService
   styleUrls: ['./student-details-page.component.css']
 })
 export class StudentDetailsPageComponent implements OnInit {
+
+  disabled = true;
 
   //Empty student instantiated
   student:IDetialedStudent={
@@ -20,6 +24,7 @@ export class StudentDetailsPageComponent implements OnInit {
   }
 
   busy=false;//Used to know if the application is waiting for something
+  form: any;
   constructor(private studentManagementService:StudentManagementService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -60,6 +65,9 @@ export class StudentDetailsPageComponent implements OnInit {
 
   removeChip(course:String){
     this.student.courses.splice(this.student.courses.indexOf(course),1)
+  }
+  editFields(){
+   this.form.disabled = false;
   }
 
 }

@@ -8,8 +8,7 @@
 }
 
 .container {
-    min-width: fit-content;
-    max-width: 80%;
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
@@ -19,3 +18,4 @@
 mat-form-field{
     margin-top: 10px;
 }
+
