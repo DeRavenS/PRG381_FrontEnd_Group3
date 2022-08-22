@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { IDetialedStudent } from 'src/app/models/student-interface';
-import { IStudentDetailsRequest, StudentManagementService } from 'src/app/services/student-browser/student-browser.service';
+import { IStudentDetailsRequest, IUpdateStudentRequest, StudentManagementService } from 'src/app/services/student-browser/student-browser.service';
+
+
 
 @Component({
   selector: 'app-student-details-page',
@@ -9,6 +11,8 @@ import { IStudentDetailsRequest, StudentManagementService } from 'src/app/servic
   styleUrls: ['./student-details-page.component.css']
 })
 export class StudentDetailsPageComponent implements OnInit {
+
+  disabled = true;
 
   //Empty student instantiated
   student:IDetialedStudent={
@@ -20,10 +24,10 @@ export class StudentDetailsPageComponent implements OnInit {
   }
 
   busy=false;//Used to know if the application is waiting for something
+  form: any;
   constructor(private studentManagementService:StudentManagementService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.route)
     this.route.queryParams.subscribe(val=>{
       this.load({studentID:val["studentID"]});
       })
@@ -37,10 +41,30 @@ export class StudentDetailsPageComponent implements OnInit {
       if (val) {
         this.busy = false;
         this.student = val;
-        console.log(val);
+        console.log(this.student);
+        console.log(this.student.courses)
       }
       
     })
+  }
+
+  saveInfo(student:IDetialedStudent){
+    let req:IUpdateStudentRequest={students:[student]}
+    this.studentManagementService.updateStudent(req).subscribe(val=>{
+      if (val) {
+        alert("Information successfully updated")// Temporary
+      }
+    })
+  }
+
+  resetInfo(){
+    this.route.queryParams.subscribe(val=>{
+      this.load({studentID:val["studentID"]});
+      })
+  }
+
+  removeChip(course:String){
+    this.student.courses.splice(this.student.courses.indexOf(course),1)
   }
 
 }

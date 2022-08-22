@@ -8,7 +8,7 @@ import { StudentManagementService } from './services/student-browser/student-bro
 import { StudentManagementMockService } from './mock/mock-student-management-service/studentManagement-mock.service';
 import { StudentBrowserComponent } from './pages/student-browser/student-browser.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -32,13 +32,17 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { StudentDetailsPageComponent } from './pages/student-details-page/student-details-page.component';
+import { AdminDetailsPageComponent } from './pages/admin-details-page/admin-details-page.component';
+import { AdminService } from './services/admin-service/admin.service';
+import { MockAdminManagementService } from './mock/mock-admin-management-service/mock-admin-management.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentBrowserComponent,
-    StudentDetailsPageComponent
+    StudentDetailsPageComponent,
+    AdminDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,10 +70,12 @@ import { StudentDetailsPageComponent } from './pages/student-details-page/studen
     MatBadgeModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule
   ],
   providers: [
     {provide: StudentManagementService,useClass: StudentManagementMockService},
+    {provide: AdminService,useClass:MockAdminManagementService}
   ],
   bootstrap: [AppComponent]
 })
