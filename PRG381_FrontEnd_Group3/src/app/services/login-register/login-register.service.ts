@@ -12,6 +12,24 @@ export interface ILoginRequest extends IBrowseRequest{
 
 }
 
+export interface IRegisterUserRequest{
+  registerAdminrequest?:IRegisterAdminRequest
+  registerStudentRequest?:IRegisterStudentRequest
+}
+
+export interface IRegisterAdminRequest{
+  adminName: String
+  adminContact: String
+  adminEmail: String
+  adminPassword: String
+}
+
+export interface IRegisterStudentRequest{
+  studentName: String
+  studentPassword: String
+  studentEmail: String
+  studentAddress: String
+}
 //Login-Register Management Service Inteface
 export interface ILoginRegisterManagementService {
   loginUser(request: ILoginRequest): Observable<PagedResponse<ILogin>>;

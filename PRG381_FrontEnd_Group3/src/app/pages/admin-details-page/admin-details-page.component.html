@@ -21,7 +21,7 @@
                     <input matInput [(ngModel)]="admin.adminContact">
                 </mat-form-field><br>
                 <div align="left">
-                    <button mat-raised-button>Create New Admin Account</button>
+                    <button mat-raised-button (click)="createAdmin()">Create New Admin Account</button>
                 </div>          
             
         </mat-card-content>
