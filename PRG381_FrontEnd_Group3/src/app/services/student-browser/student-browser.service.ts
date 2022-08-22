@@ -44,9 +44,7 @@ export class StudentManagementService implements IStudentManagementService{
   getStudents(request: IStudentBrowseRequest): Observable<PagedResponse<IBRowsedStudent>> {   
       return this.http.post<PagedResponse<IBRowsedStudent>>(
         this.API_URL,
-        request);
-    
-     
+        request);    
   }
   deleteStudents(request: IDeleteStudentRequest): Observable<Object>{
       return this.http.delete<object>(
