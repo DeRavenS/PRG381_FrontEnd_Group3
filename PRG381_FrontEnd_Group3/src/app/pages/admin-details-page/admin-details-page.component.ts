@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute} from '@angular/router';
 import { IDetailedAdmin } from 'src/app/models/admin-interface';
 import { AdminService, IDetailedAdminRequest, IUpdateAdminRequest } from 'src/app/services/admin-service/admin.service';
+import { NewAdminDialogComponent } from './new-admin-dialog/new-admin-dialog.component';
 
 @Component({
   selector: 'app-admin-details-page',
@@ -17,7 +19,7 @@ export class AdminDetailsPageComponent implements OnInit {
   }
 
   busy=false
-  constructor(private adminService:AdminService,private route:ActivatedRoute) { }
+  constructor(private adminService:AdminService,private route:ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(val=>{
@@ -51,5 +53,15 @@ export class AdminDetailsPageComponent implements OnInit {
     this.route.queryParams.subscribe(val=>{
       this.load({adminID:val["adminID"]});
       })
+  }
+
+  createAdmin(){
+    let dialogRef = this.dialog.open(NewAdminDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe(result=>{
+      if (result) {
+        alert(result);
+      }
+    })
   }
 }

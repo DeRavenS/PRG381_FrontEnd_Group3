@@ -1,0 +1,29 @@
+    <mat-card class="container">
+        <mat-card-header class="jCentre">
+            <h1>Enter New Admin Details</h1>
+        </mat-card-header>
+        <mat-card-content class="jCentre">
+                <mat-form-field appearance="outline" class="wFull">
+                    <mat-label>Name</mat-label>
+                    <input matInput [(ngModel)]="admin.adminName" required="true">
+                </mat-form-field><br>
+                <mat-form-field appearance="outline" class="wFull">
+                    <mat-label>E-Mail</mat-label>
+                    <input matInput [(ngModel)]="admin.adminEmail" required="true"> 
+                </mat-form-field><br>
+                <mat-form-field appearance="outline" class="wFull">  
+                    <mat-label >Contact</mat-label>
+                    <input matInput [(ngModel)]="admin.adminContact" required="true">
+                </mat-form-field><br> 
+                <mat-form-field appearance="outline" class="wFull">  
+                    <mat-label >Password</mat-label>
+                    <input matInput [(ngModel)]="admin.adminPassword" type="password" required="true" minlength="6" maxlength="18">
+                </mat-form-field><br>                   
+        </mat-card-content>
+        <mat-card-actions class="jCentre">
+            <button class="resetBut" mat-button (click)="closeDialog()">Cancel</button>
+            <button class="loginBut" mat-button (click)="createAdmin()">Create Admin</button>
+        </mat-card-actions>
+    </mat-card>
+
+
