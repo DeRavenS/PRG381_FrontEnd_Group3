@@ -35,6 +35,7 @@ import { StudentDetailsPageComponent } from './pages/student-details-page/studen
 import { AdminDetailsPageComponent } from './pages/admin-details-page/admin-details-page.component';
 import { AdminService } from './services/admin-service/admin.service';
 import { MockAdminManagementService } from './mock/mock-admin-management-service/mock-admin-management.service';
+import { NewAdminDialogComponent } from './pages/admin-details-page/new-admin-dialog/new-admin-dialog.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { MockAdminManagementService } from './mock/mock-admin-management-service
     StudentBrowserComponent,
     StudentDetailsPageComponent,
     AdminDetailsPageComponent,
+    NewAdminDialogComponent,
   ],
   imports: [
     BrowserModule,
