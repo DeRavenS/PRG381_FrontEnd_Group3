@@ -6,31 +6,37 @@
         <mat-card-content class="jCentre">
                 <mat-form-field  appearance="outline" class="wFull" >
                     <mat-label >Student Number</mat-label>
-                    <input name="snumber" [disabled]="true" matInput [(ngModel)]="student.studentID">
+                    <input [disabled]="fieldDisabled" matInput [(ngModel)]="student.studentID">
                 </mat-form-field><br>
                 <mat-form-field appearance="outline" class="wFull">
                     <mat-label>Name</mat-label>
-                    <input matInput [(ngModel)]="student.studentName">
+                    <input [disabled]="fieldDisabled" matInput [(ngModel)]="student.studentName">
                 </mat-form-field><br>
                 <mat-form-field appearance="outline" class="wFull">
                     <mat-label>E-Mail</mat-label>
-                    <input matInput [(ngModel)]="student.studentEmail"> 
+                    <input [disabled]="fieldDisabled" matInput [(ngModel)]="student.studentEmail"> 
                 </mat-form-field><br>
                 <mat-form-field appearance="outline" class="wFull">  
                     <mat-label >Address</mat-label>
-                    <input matInput [(ngModel)]="student.studentAddress">
+                    <input [disabled]="fieldDisabled" matInput [(ngModel)]="student.studentAddress">
                 </mat-form-field><br>
-                <div align="left">
+                <mat-form-field appearance="outline" class="wFull">
                     <mat-label align="left">Courses</mat-label>
-                    <mat-chip-list>
+                    <mat-chip-list [disabled]="fieldDisabled" #courseList>
                         <mat-chip *ngFor="let course of student.courses" (removed)="removeChip(course)"> {{course}} <button matChipRemove><mat-icon>cancel</mat-icon></button></mat-chip>
+                        <input  placeholder="New fruit..."
+                        [matChipInputFor]="courseList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)">
                     </mat-chip-list>     
-                </div>          
+                </mat-form-field>  
             
         </mat-card-content>
         <mat-card-actions class="jCentre">
-            <button class="resetBut"  mat-button (click)="resetInfo()">Reset</button>
-            <button class="loginBut" mat-button (click)="saveInfo(student)">Save Information</button>
+            <button class="sBut"  mat-button (click)="resetInfo()">Reset</button>
+            <button class="sBut" mat-button (click)="openDialog(student)">Save Information</button>
+            <button class="sBut" mat-button (click)="editForm()">Edit</button>
         </mat-card-actions>
     </mat-card>
 </body>

@@ -33,7 +33,7 @@ import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { StudentDetailsPageComponent } from './pages/student-details-page/student-details-page.component';
+import { StudentDetailsPageComponent, DialogSaveUserComponent } from './pages/student-details-page/student-details-page.component';
 import { AdminDetailsPageComponent } from './pages/admin-details-page/admin-details-page.component';
 import { AdminService } from './services/admin-service/admin.service';
 import { MockAdminManagementService } from './mock/mock-admin-management-service/mock-admin-management.service';
@@ -48,7 +48,8 @@ import { NewAdminDialogComponent } from './pages/admin-details-page/new-admin-di
     AdminDetailsPageComponent,
     NewAdminDialogComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DialogSaveUserComponent
   ],
   imports: [
     BrowserModule,
