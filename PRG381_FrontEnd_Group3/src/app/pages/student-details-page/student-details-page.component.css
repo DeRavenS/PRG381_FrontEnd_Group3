@@ -1,9 +1,10 @@
 .jCentre {
     justify-content: center;
     text-align: center;
+    display: block;
 }
 
-.wFull {
+.wFull, input {
     width: 100%;
 }
 
@@ -37,24 +38,15 @@ body {
     background-color: #e1eedd;
 }
 
-.loginBut {
-    border-radius: 2px;
-    display: inline-block;
-    width: 60%;
-    text-align: center;
-    background-color: #416a59;
-    color: white;
-}
 
 .mat-chip {
     background-color: #e1eedd;
     color: black;
 }
 
-.resetBut {
+.sBut {
     border-radius: 2px;
-    display: inline-block;
-    width: 30%;
+    width:fit-content;
     text-align: center;
     background-color: #416a59;
     color: white;

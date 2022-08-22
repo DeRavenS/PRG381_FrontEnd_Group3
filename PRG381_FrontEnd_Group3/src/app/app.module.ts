@@ -31,14 +31,15 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { StudentDetailsPageComponent } from './pages/student-details-page/student-details-page.component';
+import { StudentDetailsPageComponent, DialogSaveUserComponent } from './pages/student-details-page/student-details-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentBrowserComponent,
-    StudentDetailsPageComponent
+    StudentDetailsPageComponent,
+    DialogSaveUserComponent
   ],
   imports: [
     BrowserModule,
