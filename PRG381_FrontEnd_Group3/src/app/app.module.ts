@@ -32,13 +32,17 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { StudentDetailsPageComponent } from './pages/student-details-page/student-details-page.component';
+import { AdminDetailsPageComponent } from './pages/admin-details-page/admin-details-page.component';
+import { AdminService } from './services/admin-service/admin.service';
+import { MockAdminManagementService } from './mock/mock-admin-management-service/mock-admin-management.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentBrowserComponent,
-    StudentDetailsPageComponent
+    StudentDetailsPageComponent,
+    AdminDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,7 @@ import { StudentDetailsPageComponent } from './pages/student-details-page/studen
   ],
   providers: [
     {provide: StudentManagementService,useClass: StudentManagementMockService},
+    {provide: AdminService,useClass:MockAdminManagementService}
   ],
   bootstrap: [AppComponent]
 })
