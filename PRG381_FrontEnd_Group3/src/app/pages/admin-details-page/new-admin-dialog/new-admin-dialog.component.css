@@ -37,20 +37,6 @@ body {
     background-color: #e1eedd;
 }
 
-.loginBut {
-    border-radius: 2px;
-    display: inline-block;
-    width: 60%;
-    text-align: center;
-    background-color: #416a59;
-    color: white;
-}
-
-.mat-chip {
-    background-color: #e1eedd;
-    color: black;
-}
-
 .resetBut {
     border-radius: 2px;
     display: inline-block;
