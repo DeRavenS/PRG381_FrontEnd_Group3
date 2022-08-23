@@ -8,6 +8,7 @@
 }
 
 .container {
+    display: block;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
@@ -15,12 +16,55 @@
     margin-bottom: auto;
   }
 
+.accordion {
+    width: 38%;
+    margin: auto;
+    text-align: center;
+}
+
 mat-form-field{
     margin-top: 10px;
 }
 
-.mat-card {
-    width: fit-content;
+.main-card {
+    width: 30%;
+    border-radius: 5px;
+    margin: auto;
+    height: fit-content;
+    padding: 50px;
+
+}
+
+.sBut {
+    border-radius: 2px;
+    width:fit-content;
+    text-align: center;
+    background-color: #416a59;
+    color: white;
+}
+
+.additionalBut {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 30%;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #416a59;
+    color: white;
+}
+
+acc-card {
+    min-width: fit-content;
+    width: 300px;
+    border-radius: 5px;
+    margin: auto;
+    height: fit-content;
+    box-shadow: none;
+}
+
+.main-container {
+    width: 50%;
     border-radius: 5px;
     margin: auto;
     height: fit-content;

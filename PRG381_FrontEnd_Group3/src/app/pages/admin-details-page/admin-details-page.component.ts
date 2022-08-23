@@ -21,6 +21,8 @@ export class AdminDetailsPageComponent implements OnInit {
   busy=false
   constructor(private adminService:AdminService,private route:ActivatedRoute, public dialog: MatDialog) { }
 
+  fieldDisabled = true;
+
   ngOnInit(): void {
     this.route.queryParams.subscribe(val=>{
       this.load({adminID:val["adminID"]});
@@ -45,6 +47,7 @@ export class AdminDetailsPageComponent implements OnInit {
     this.adminService.updateAdmin(req).subscribe(val=>{
       if (val) {
         alert("Information successfully updated")// Temporary
+        this.fieldDisabled = true;
       }
     })
   }
@@ -53,6 +56,10 @@ export class AdminDetailsPageComponent implements OnInit {
     this.route.queryParams.subscribe(val=>{
       this.load({adminID:val["adminID"]});
       })
+  }
+
+  editForm() {
+    this.fieldDisabled = false;
   }
 
   createAdmin(){

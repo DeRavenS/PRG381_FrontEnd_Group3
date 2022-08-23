@@ -19,6 +19,14 @@ mat-form-field{
     margin-top: 10px;
 }
 
+.sBut {
+    border-radius: 2px;
+    width:fit-content;
+    text-align: center;
+    background-color: #416a59;
+    color: white;
+}
+
 .mat-card {
     width: fit-content;
     border-radius: 5px;

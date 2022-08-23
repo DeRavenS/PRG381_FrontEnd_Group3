@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentManagementService } from './services/student-browser/student-browser.service';
 import { StudentManagementMockService } from './mock/mock-student-management-service/studentManagement-mock.service';
-import { StudentBrowserComponent } from './pages/student-browser/student-browser.component';
+import { StudentBrowserComponent, DeleteUserComponent } from './pages/student-browser/student-browser.component';
 
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
@@ -24,6 +24,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatDialogModule } from "@angular/material/dialog";
+import {MatExpansionModule} from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -49,7 +50,8 @@ import { NewAdminDialogComponent } from './pages/admin-details-page/new-admin-di
     NewAdminDialogComponent,
     LoginComponent,
     RegisterComponent,
-    DialogSaveUserComponent
+    DialogSaveUserComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { NewAdminDialogComponent } from './pages/admin-details-page/new-admin-di
     ReactiveFormsModule,
     MatDividerModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule
   ],
   providers: [
     {provide: StudentManagementService,useClass: StudentManagementMockService},

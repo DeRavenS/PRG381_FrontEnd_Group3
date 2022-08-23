@@ -1,35 +1,47 @@
 <body>
-    <mat-card class="container">
-        <mat-card-header class="jCentre">
-            <h1>Admin Details</h1>
-        </mat-card-header>
-        <mat-card-content class="jCentre">
-                <mat-form-field  appearance="outline" class="wFull" >
-                    <mat-label >Admin Number</mat-label>
-                    <input name="anumber" [disabled]="true" matInput [(ngModel)]="admin.adminID">
-                </mat-form-field><br>
-                <mat-form-field appearance="outline" class="wFull">
-                    <mat-label>Name</mat-label>
-                    <input matInput [(ngModel)]="admin.adminName">
-                </mat-form-field><br>
-                <mat-form-field appearance="outline" class="wFull">
-                    <mat-label>E-Mail</mat-label>
-                    <input matInput [(ngModel)]="admin.adminEmail"> 
-                </mat-form-field><br>
-                <mat-form-field appearance="outline" class="wFull">  
-                    <mat-label >Contact</mat-label>
-                    <input matInput [(ngModel)]="admin.adminContact">
-                </mat-form-field><br>
-                <div align="left">
-                    <button mat-raised-button (click)="createAdmin()">Create New Admin Account</button>
-                </div>          
-            
-        </mat-card-content>
-        <mat-card-actions class="jCentre">
-            <button class="resetBut"  mat-button (click)="resetInfo()">Reset</button>
-            <button class="loginBut" mat-button (click)="saveInfo(admin)">Save Information</button>
-        </mat-card-actions>
-    </mat-card>
+    <div class="main-container">
+        <mat-card class="main-card">
+            <mat-card-header class="jCentre">
+                <h1>Admin Details</h1>
+            </mat-card-header>
+            <mat-card-content class="jCentre">
+                    <mat-form-field  appearance="outline" class="wFull" >
+                        <mat-label >Admin Number</mat-label>
+                        <input name="anumber" [disabled]="true" matInput [(ngModel)]="admin.adminID">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="wFull">
+                        <mat-label>Name</mat-label>
+                        <input [disabled]="fieldDisabled" matInput [(ngModel)]="admin.adminName">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="wFull">
+                        <mat-label>E-Mail</mat-label>
+                        <input [disabled]="fieldDisabled" matInput [(ngModel)]="admin.adminEmail"> 
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="wFull">  
+                        <mat-label >Contact</mat-label>
+                        <input [disabled]="fieldDisabled" matInput [(ngModel)]="admin.adminContact">
+                    </mat-form-field>
+        
+                
+            </mat-card-content>
+            <mat-card-actions class="jCentre">
+                <button class="sBut"  mat-button (click)="resetInfo()">Reset</button>
+                <button class="sBut" mat-button (click)="saveInfo(admin)">Save Information</button>
+                <button class="sBut" mat-button (click)="editForm()">Edit</button>
+            </mat-card-actions>
+        </mat-card>
+        <br>
+        <mat-accordion >
+            <mat-expansion-panel class="accordion">
+                <mat-expansion-panel-header>View Additional Actions</mat-expansion-panel-header>
+                <button class="additionalBut" mat-button (click)="createAdmin()"><mat-icon>add</mat-icon>Admin</button>
+                <button class="additionalBut" mat-button (click)="saveInfo(admin)"><mat-icon>add</mat-icon>Student</button>
+                <button class="additionalBut" mat-button routerLink="/students"><mat-icon>arrow_outward</mat-icon>Students</button>
+            </mat-expansion-panel>
+        </mat-accordion>
+        
+    </div>
+    
 </body>
 
 

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { IBRowsedStudent } from 'src/app/models/browsed-student';
 import { PagedResponse } from 'src/app/models/paged-response-interface';
 import { paginator } from 'src/app/models/paginator';
-import { StudentManagementService, IStudentBrowseRequest } from 'src/app/services/student-browser/student-browser.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { StudentManagementService, IStudentBrowseRequest, IDeleteStudentRequest } from 'src/app/services/student-browser/student-browser.service';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-student-browser',
@@ -28,11 +30,14 @@ export class StudentBrowserComponent implements OnInit {
   }
 
   busy = false
-  displayedColumns: string[] = ['StudentID', 'StudentName', 'StudentEMail','address'];
+  displayedColumns: string[] = ['StudentID', 'StudentName', 'StudentEMail','address', 'actions'];
 
   dataSource: any = []
 
-  constructor(private studentManagementService: StudentManagementService, private router:Router) {
+  sID = '';
+
+
+  constructor(private studentManagementService: StudentManagementService, private router:Router, public dialog : MatDialog) {
 
   }
 
@@ -65,9 +70,43 @@ export class StudentBrowserComponent implements OnInit {
     })
   }
 
+  deleteStudent(studentID:string) {
+    console.log("Deleted: " + studentID);
+  }
+
   getStudent(studentID:string){
     console.log(studentID);
     this.router.navigate([`/students/details`],{queryParams:{studentID:studentID}});
   }
 
+  openDialog(studentID:string) {
+    const dialogRef = this.dialog.open(DeleteUserComponent, {
+      width: 'fit-content',
+      data: {studID: studentID, delMet: this.deleteStudent}
+    });
+}
+}
+
+@Component({
+  selector: 'app-delete-user',
+  templateUrl: './delete-user.component.html',
+  styleUrls: ['./delete-user.component.css']
+})
+
+export class DeleteUserComponent implements OnInit {
+
+  studentID = '';
+  delMet(studentID: string) {}
+
+  constructor(public dialogRef: MatDialogRef<DeleteUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,) {}
+
+    ngOnInit(): void {
+      this.studentID = this.data.studID;
+      this.delMet = this.data.delMet;
+    }
+
+  onNO(): void {
+    this.dialogRef.close();
+  }
 }
