@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 export interface IResetPasswordRequest {
+  email: String
   oldPassword: String
   newPassword: String
   admin: Boolean
