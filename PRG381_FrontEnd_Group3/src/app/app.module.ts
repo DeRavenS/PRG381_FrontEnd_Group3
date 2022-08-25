@@ -39,6 +39,7 @@ import { AdminDetailsPageComponent } from './pages/admin-details-page/admin-deta
 import { AdminService } from './services/admin-service/admin.service';
 import { MockAdminManagementService } from './mock/mock-admin-management-service/mock-admin-management.service';
 import { NewAdminDialogComponent } from './pages/admin-details-page/new-admin-dialog/new-admin-dialog.component';
+import { ResetPasswordDialogComponent } from './pages/login/reset-password-dialog/reset-password-dialog.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { NewAdminDialogComponent } from './pages/admin-details-page/new-admin-di
     LoginComponent,
     RegisterComponent,
     DialogSaveUserComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    ResetPasswordDialogComponent
   ],
   imports: [
     BrowserModule,
