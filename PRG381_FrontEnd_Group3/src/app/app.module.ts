@@ -86,7 +86,7 @@ import { ResetPasswordDialogComponent } from './pages/login/reset-password-dialo
     MatExpansionModule
   ],
   providers: [
-    {provide: StudentManagementService,useClass: StudentManagementMockService},
+    {provide: StudentManagementService,useClass: StudentManagementService},
     {provide: AdminService,useClass:MockAdminManagementService}
   ],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { paginator } from 'src/app/models/paginator';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { StudentManagementService, IStudentBrowseRequest, IDeleteStudentRequest } from 'src/app/services/student-browser/student-browser.service';
 import { DialogRef } from '@angular/cdk/dialog';
+import { IBrowseRequest } from 'src/app/models/browse-request-interface';
 
 @Component({
   selector: 'app-student-browser',
@@ -15,10 +16,10 @@ import { DialogRef } from '@angular/cdk/dialog';
 })
 export class StudentBrowserComponent implements OnInit {
 
-  ELEMENT_DATA: PagedResponse<IBRowsedStudent> = {items: [], page: 0, itemsPerPage: 0, totalItems:0,pageCount:0}
+  ELEMENT_DATA: PagedResponse<IBRowsedStudent> = {items: [], page: 0, size: 0, totalItems:0,pageCount:0}
 
   tempBrowseStudentRequest: IStudentBrowseRequest = {
-    itemsPerPage:10,
+    size:10,
     page:1
   }
   pageEvent?:PageEvent
@@ -51,7 +52,7 @@ export class StudentBrowserComponent implements OnInit {
     let browseStudentRequest:IStudentBrowseRequest
     if (pageEvent) {
       browseStudentRequest={
-      itemsPerPage: pageEvent.pageSize,
+      size: pageEvent.pageSize,
       page:pageEvent.pageIndex+1,
       }
     }else browseStudentRequest=this.tempBrowseStudentRequest
@@ -61,7 +62,7 @@ export class StudentBrowserComponent implements OnInit {
         this.busy = false
         console.log(val)
         this.paginator.page = val.page
-        this.paginator.itemsPerPage = val.itemsPerPage
+        this.paginator.itemsPerPage = val.size
         this.paginator.totalItems=val.totalItems
         this.paginator.pageCount=val.pageCount
         this.ELEMENT_DATA = val

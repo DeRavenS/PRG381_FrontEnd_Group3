@@ -56,7 +56,7 @@ export class StudentManagementService implements IStudentManagementService{
 
   studentDetails(request: IStudentDetailsRequest): Observable<IDetialedStudent> {
     let params = new HttpParams
-    params.set("studentID",request.studentID)
+    params=params.set("studentID",request.studentID)
     return this.http.get<IDetialedStudent>(this.API_URL,{params:params})
   }
 

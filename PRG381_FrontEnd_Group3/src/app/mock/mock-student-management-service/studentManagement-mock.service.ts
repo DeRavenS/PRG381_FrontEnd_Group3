@@ -36,12 +36,12 @@ export class StudentManagementMockService implements IStudentManagementService{
     let filteredItems: IBRowsedStudent[] = []
     let upperLimt:number
 
-    if (request.page*request.itemsPerPage+request.itemsPerPage>allItems.length) {
+    if (request.page*request.size+request.size>allItems.length) {
       upperLimt=allItems.length
     }
-    else upperLimt=request.page*request.itemsPerPage
+    else upperLimt=request.page*request.size
 
-    for (let i = Math.ceil(request.page*request.itemsPerPage-request.itemsPerPage); i < upperLimt; i++) {
+    for (let i = Math.ceil(request.page*request.size-request.size); i < upperLimt; i++) {
       filteredItems.push(allItems[i])
     }
 
@@ -49,11 +49,11 @@ export class StudentManagementMockService implements IStudentManagementService{
     // Search by transaction Reference
     
 
-    let pagecount=allItems.length/request.itemsPerPage;
+    let pagecount=allItems.length/request.size;
     return of<PagedResponse<IBRowsedStudent>>({
       items: filteredItems,
       page: request.page,
-      itemsPerPage:request.itemsPerPage,
+      size:request.size,
       totalItems: allItems.length,
       pageCount: pagecount,
     }).pipe(

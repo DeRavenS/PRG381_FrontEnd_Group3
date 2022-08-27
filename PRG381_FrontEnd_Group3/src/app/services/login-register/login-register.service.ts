@@ -33,6 +33,8 @@ export interface IRegisterStudentRequest{
 //Login-Register Management Service Inteface
 export interface ILoginRegisterManagementService {
   loginUser(request: ILoginRequest): Observable<PagedResponse<ILogin>>;
+  registerStudent(request: IRegisterUserRequest): Observable<Object>;
+  registerAdmin(request: IRegisterUserRequest): Observable<Object>
 }
 
 @Injectable({
@@ -41,13 +43,22 @@ export interface ILoginRegisterManagementService {
 
 export class LoginRegisterManagementService implements ILoginRegisterManagementService {
 
-  API_URL:string = `${environment.api_url}/login`
+  API_URL:string = `${environment.api_url}`
 
   constructor(private http:HttpClient) { }
 
   loginUser(request: ILoginRequest): Observable<PagedResponse<ILogin>> {   
     return this.http.post<PagedResponse<ILogin>>(
-      this.API_URL,
+      this.API_URL+"/login",
       request); 
+  }
+
+  registerStudent(request: IRegisterUserRequest): Observable<Object> {
+    console.log(request)
+      return this.http.post<Object>(this.API_URL+"/student/create",request)
+  }
+
+  registerAdmin(request: IRegisterUserRequest): Observable<Object> {
+    return this.http.post<Object>(this.API_URL+"/admin/create",request)
   }
 }
