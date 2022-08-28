@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 export interface IResetPasswordRequest {
   oldPassword: String
   newPassword: String
-  admin: Boolean
+  email: String
 }
 
 export interface IResetPasswordService{
@@ -21,7 +21,7 @@ export class ResetPasswordService implements IResetPasswordService{
   constructor(private http: HttpClient) { }
 
   resetPassword(resetPasswordRequest: IResetPasswordRequest): Observable<Object> {
-      return this.http.patch(this.api_url,resetPasswordRequest);
+      return this.http.put(this.api_url,resetPasswordRequest);
   }
 
 }

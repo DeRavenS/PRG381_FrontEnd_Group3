@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResetPasswordService } from 'src/app/services/reset-password/reset-password.service';
+import { IResetPasswordRequest, IResetPasswordService, ResetPasswordService } from 'src/app/services/reset-password/reset-password.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -9,12 +9,20 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ResetPasswordDialogComponent implements OnInit {
 
+  resetPasswordRequest:IResetPasswordRequest={
+    email:"",
+    newPassword:"",
+    oldPassword:"",
+  }
   constructor(private resetService:ResetPasswordService, public dialogRef:MatDialogRef<ResetPasswordDialogComponent>) { }
 
   ngOnInit(): void {
   }
 
   createAdmin(): void{
+    if (this.resetPassword(this.resetPasswordRequest)) {
+      alert("Password Reset Failed")
+    }
     this.dialogRef.close(true);
   }
 
@@ -22,4 +30,15 @@ export class ResetPasswordDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  resetPassword(resetPasswordrequest: IResetPasswordRequest) : Boolean{
+    this.resetService.resetPassword(resetPasswordrequest).subscribe(val=>{
+      if (val) {
+        return true
+      } 
+      else return false
+    }
+    )
+    return false;
+  }
+  
 }

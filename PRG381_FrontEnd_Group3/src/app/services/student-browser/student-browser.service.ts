@@ -19,17 +19,13 @@ export interface IStudentDetailsRequest{
   studentID: string;
 }
 
-export interface IUpdateStudentRequest {
-  students:IDetialedStudent[]
-}
-
 
 //interface of service responsible for managing students
 export interface IStudentManagementService {
   getStudents(request:IStudentBrowseRequest):Observable<PagedResponse<IBRowsedStudent>>;
   deleteStudents(request:IDeleteStudentRequest):Observable<Object>;
   studentDetails(request:IStudentDetailsRequest):Observable<IDetialedStudent>;
-  updateStudent(request:IUpdateStudentRequest):Observable<Object>;
+  updateStudent(request:IDetialedStudent):Observable<Object>;
 }
 
 @Injectable({
@@ -60,8 +56,8 @@ export class StudentManagementService implements IStudentManagementService{
     return this.http.get<IDetialedStudent>(this.API_URL,{params:params})
   }
 
-  updateStudent(request: IUpdateStudentRequest): Observable<Object> {
-      return this.http.patch<Object>(this.API_URL,request)
+  updateStudent(request: IDetialedStudent): Observable<Object> {
+      return this.http.put<Object>(this.API_URL,request)
   }
 
 }

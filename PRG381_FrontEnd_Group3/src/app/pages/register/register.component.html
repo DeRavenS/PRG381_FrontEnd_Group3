@@ -21,7 +21,7 @@
                     <!--Student Password-->
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input [(ngModel)]="registerStudentRequest.studentPassword" type="password" name="password" matInput placeholder="john@doe.com" [type]="hide ? 'password' : 'text'">
+                        <input [(ngModel)]="registerStudentRequest.studentPassword" type="password" name="password" matInput placeholder="password" [type]="hide ? 'password' : 'text'">
                         <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                           </button>
