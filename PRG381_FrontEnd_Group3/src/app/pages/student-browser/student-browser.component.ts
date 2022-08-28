@@ -5,9 +5,8 @@ import { IBRowsedStudent } from 'src/app/models/browsed-student';
 import { PagedResponse } from 'src/app/models/paged-response-interface';
 import { paginator } from 'src/app/models/paginator';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { StudentManagementService, IStudentBrowseRequest, IDeleteStudentRequest } from 'src/app/services/student-browser/student-browser.service';
-import { DialogRef } from '@angular/cdk/dialog';
-import { IBrowseRequest } from 'src/app/models/browse-request-interface';
+import { StudentManagementService, IStudentBrowseRequest } from 'src/app/services/student-browser/student-browser.service';
+import { CurrentUser } from 'src/app/models/currentUser';
 
 @Component({
   selector: 'app-student-browser',
@@ -71,20 +70,34 @@ export class StudentBrowserComponent implements OnInit {
     })
   }
 
-  deleteStudent(studentID:string) {
-    console.log("Deleted: " + studentID);
-  }
-
   getStudent(studentID:string){
     console.log(studentID);
     this.router.navigate([`/students/details`],{queryParams:{studentID:studentID}});
+  }
+  getAdmin(){
+    this.router.navigate([`/admin/details`],{queryParams:{adminID:CurrentUser.id}});
+  }
+  regStudent(){
+    this.router.navigate([`/register`],{queryParams:{adminID:CurrentUser.id}});
   }
 
   openDialog(studentID:string) {
     const dialogRef = this.dialog.open(DeleteUserComponent, {
       width: 'fit-content',
-      data: {studID: studentID, delMet: this.deleteStudent}
+      data: {studID: studentID}
     });
+
+    dialogRef.afterClosed().subscribe(val=>{
+      if(val)this.load();   
+    })
+    
+}
+delMet(studentID: string) {
+  this.studentManagementService.deleteStudents({id:studentID}).subscribe(val=>{
+    if (val) {
+      this.load();
+    }
+  })
 }
 }
 
@@ -97,17 +110,20 @@ export class StudentBrowserComponent implements OnInit {
 export class DeleteUserComponent implements OnInit {
 
   studentID = '';
-  delMet(studentID: string) {}
+  
 
-  constructor(public dialogRef: MatDialogRef<DeleteUserComponent>,
+  constructor(public dialogRef: MatDialogRef<DeleteUserComponent>, private studentManagementService: StudentManagementService,
     @Inject(MAT_DIALOG_DATA) public data: any,) {}
 
     ngOnInit(): void {
       this.studentID = this.data.studID;
-      this.delMet = this.data.delMet;
+      //this.delMet = this.data.delMet;
     }
 
   onNO(): void {
     this.dialogRef.close();
+  }
+  delMet(studentID: string) {
+    this.studentManagementService.deleteStudents({id:studentID})
   }
 }

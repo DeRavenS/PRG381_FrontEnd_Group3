@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
     studentPassword:""
   }
 
-  constructor(private registerService: LoginRegisterManagementService,private router:Router) { }
+  constructor(private registerService: LoginRegisterManagementService,private router:Router,private activeRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -27,8 +27,14 @@ export class RegisterComponent implements OnInit {
 
     this.registerService.registerStudent(registerUserRequest).subscribe( resp=>{
       if (resp) {
-        this.router.navigate(['/login'])
+        this.activeRoute.queryParams.subscribe(val=>{
+          if(val["adminID"]){
+            this.router.navigate(['/students'])
+          }
+          else this.router.navigate(['/login'])
+        })
       }
+      else this.router.navigate(['/login'])
     }
 
     )

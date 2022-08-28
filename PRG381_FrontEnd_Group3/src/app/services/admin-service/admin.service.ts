@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable,  } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IDetailedAdmin } from 'src/app/models/admin-interface';
 import { environment } from 'src/environments/environment';
@@ -9,17 +9,13 @@ export interface IDetailedAdminRequest{
   adminID: string
 }
 
-export interface IUpdateAdminRequest{
-  admins: IDetailedAdmin[]
-}
-
 export interface IDeleteAdminRequest{
-  adminID: string
+  adminID: String
 }
 
 export interface IAdminManagementService{
   getAdmin(request:IDetailedAdminRequest):Observable<IDetailedAdmin>
-  updateAdmin(request:IUpdateAdminRequest):Observable<Object>
+  updateAdmin(request:IDetailedAdmin):Observable<Object>
   deleteAdmin(request:IDeleteAdminRequest):Observable<Object>
 }
 
@@ -28,17 +24,17 @@ export interface IAdminManagementService{
   providedIn: 'root'
 })
 export class AdminService implements IAdminManagementService{
-  api_url=environment.api_url+"/admin"
+  api_url:string=`${environment.api_url}/admin`
   constructor(private http:HttpClient) { }
 
   getAdmin(request: IDetailedAdminRequest): Observable<IDetailedAdmin> {
     let params= new HttpParams
-    params.set("adminID",request.adminID)
-      return this.http.get<IDetailedAdmin>(this.api_url+"/",{params:params});
+    params=params.set("adminID",request.adminID)
+    return this.http.get<IDetailedAdmin>(this.api_url,{params:params});
   }
 
-  updateAdmin(request: IUpdateAdminRequest): Observable<Object> {
-      return this.http.patch<Object>(this.api_url,request)
+  updateAdmin(request: IDetailedAdmin): Observable<Object> {
+      return this.http.put<Object>(this.api_url,request)
   }
     
   deleteAdmin(request: IDeleteAdminRequest): Observable<Object> {

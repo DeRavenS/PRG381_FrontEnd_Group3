@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute} from '@angular/router';
 import { IDetailedAdmin } from 'src/app/models/admin-interface';
-import { AdminService, IDetailedAdminRequest, IUpdateAdminRequest } from 'src/app/services/admin-service/admin.service';
+import { CurrentUser } from 'src/app/models/currentUser';
+import { AdminService, IDetailedAdminRequest } from 'src/app/services/admin-service/admin.service';
 import { NewAdminDialogComponent } from './new-admin-dialog/new-admin-dialog.component';
 
 @Component({
@@ -32,6 +33,7 @@ export class AdminDetailsPageComponent implements OnInit {
    //used to retieve student
    load(detailedAdminRequest:IDetailedAdminRequest) {
     this.busy = true;
+    console.log(detailedAdminRequest)
     this.adminService.getAdmin(detailedAdminRequest).subscribe((val) => {
       if (val) {
         this.busy = false;
@@ -43,8 +45,7 @@ export class AdminDetailsPageComponent implements OnInit {
   }
 
   saveInfo(admin:IDetailedAdmin){
-    let req:IUpdateAdminRequest={admins:[admin]}
-    this.adminService.updateAdmin(req).subscribe(val=>{
+    this.adminService.updateAdmin(admin).subscribe(val=>{
       if (val) {
         alert("Information successfully updated")// Temporary
         this.fieldDisabled = true;
@@ -67,7 +68,7 @@ export class AdminDetailsPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result=>{
       if (result) {
-        alert(result);
+        alert("Admin Created Successfully");
       }
     })
   }

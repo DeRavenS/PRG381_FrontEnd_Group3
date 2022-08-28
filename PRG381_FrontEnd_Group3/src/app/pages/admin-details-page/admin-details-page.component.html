@@ -27,7 +27,10 @@
             <mat-card-actions class="jCentre">
                 <button class="sBut"  mat-button (click)="resetInfo()">Reset</button>
                 <button class="sBut" mat-button (click)="saveInfo(admin)">Save Information</button>
-                <button class="sBut" mat-button (click)="editForm()">Edit</button>
+                <div style="margin-top: 5px;">
+                    <button class="sBut" mat-button (click)="editForm()">Edit</button>
+                </div>
+                
             </mat-card-actions>
         </mat-card>
         <br>
@@ -35,7 +38,6 @@
             <mat-expansion-panel class="accordion">
                 <mat-expansion-panel-header>View Additional Actions</mat-expansion-panel-header>
                 <button class="additionalBut" mat-button (click)="createAdmin()"><mat-icon>add</mat-icon>Admin</button>
-                <button class="additionalBut" mat-button (click)="saveInfo(admin)"><mat-icon>add</mat-icon>Student</button>
                 <button class="additionalBut" mat-button routerLink="/students"><mat-icon>arrow_outward</mat-icon>Students</button>
             </mat-expansion-panel>
         </mat-accordion>

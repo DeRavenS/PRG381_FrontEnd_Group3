@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IDetailedAdmin } from 'src/app/models/admin-interface';
-import { AdminService, IAdminManagementService, IDeleteAdminRequest, IDetailedAdminRequest, IUpdateAdminRequest } from 'src/app/services/admin-service/admin.service';
+import { IAdminManagementService, IDeleteAdminRequest, IDetailedAdminRequest,  } from 'src/app/services/admin-service/admin.service';
 import { getDetailedAdminMock } from '../detailedAdminMock';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class MockAdminManagementService implements IAdminManagementService{
       return of<Object>({})
   }
 
-  updateAdmin(request: IUpdateAdminRequest): Observable<Object> {
+  updateAdmin(request: IDetailedAdmin): Observable<Object> {
       return of<Object>(request)
   }
 }

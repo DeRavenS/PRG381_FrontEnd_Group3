@@ -17,7 +17,7 @@ export interface ILoginResponse{
   id: String;
 }
 export interface IRegisterUserRequest{
-  registerAdminrequest?:IRegisterAdminRequest
+  registerAdminRequest?:IRegisterAdminRequest
   registerStudentRequest?:IRegisterStudentRequest
 }
 

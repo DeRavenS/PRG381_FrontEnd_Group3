@@ -22,7 +22,12 @@ export class NewAdminDialogComponent implements OnInit {
   }
 
   createAdmin(): void{
-    this.dialogRef.close(true);
+    this.registerService.registerAdmin({registerAdminRequest:this.admin}).subscribe(val=>{
+      if(val){
+        this.dialogRef.close(true);
+      }
+    })
+    
   }
 
   closeDialog(){
