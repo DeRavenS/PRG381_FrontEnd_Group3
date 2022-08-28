@@ -1,0 +1,9 @@
+<div>
+    <h1 mat-dialog-title>Caution</h1>
+    <p>Are you sure you want to delete student with ID {{studentID}}?</p>
+    <button class="sBut" mat-button (click)="onNO()">Cancel</button>
+    <button class="sBut" mat-button [mat-dialog-close]="delMet(studentID)" >Confirm</button>
+  </div>
+    
+  
+  

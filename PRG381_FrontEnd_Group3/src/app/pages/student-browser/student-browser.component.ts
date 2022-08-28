@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { IBRowsedStudent } from 'src/app/models/browsed-student';
 import { PagedResponse } from 'src/app/models/paged-response-interface';
 import { paginator } from 'src/app/models/paginator';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { StudentManagementService, IStudentBrowseRequest } from 'src/app/services/student-browser/student-browser.service';
+import { CurrentUser } from 'src/app/models/currentUser';
 
 @Component({
   selector: 'app-student-browser',
@@ -13,10 +15,10 @@ import { StudentManagementService, IStudentBrowseRequest } from 'src/app/service
 })
 export class StudentBrowserComponent implements OnInit {
 
-  ELEMENT_DATA: PagedResponse<IBRowsedStudent> = {items: [], page: 0, itemsPerPage: 0, totalItems:0,pageCount:0}
+  ELEMENT_DATA: PagedResponse<IBRowsedStudent> = {items: [], page: 0, size: 0, totalItems:0,pageCount:0}
 
   tempBrowseStudentRequest: IStudentBrowseRequest = {
-    itemsPerPage:10,
+    size:10,
     page:1
   }
   pageEvent?:PageEvent
@@ -28,11 +30,14 @@ export class StudentBrowserComponent implements OnInit {
   }
 
   busy = false
-  displayedColumns: string[] = ['StudentID', 'StudentName', 'StudentEMail','address'];
+  displayedColumns: string[] = ['StudentID', 'StudentName', 'StudentEMail','address', 'actions'];
 
   dataSource: any = []
 
-  constructor(private studentManagementService: StudentManagementService, private router:Router) {
+  sID = '';
+
+
+  constructor(private studentManagementService: StudentManagementService, private router:Router, public dialog : MatDialog) {
 
   }
 
@@ -46,7 +51,7 @@ export class StudentBrowserComponent implements OnInit {
     let browseStudentRequest:IStudentBrowseRequest
     if (pageEvent) {
       browseStudentRequest={
-      itemsPerPage: pageEvent.pageSize,
+      size: pageEvent.pageSize,
       page:pageEvent.pageIndex+1,
       }
     }else browseStudentRequest=this.tempBrowseStudentRequest
@@ -56,7 +61,7 @@ export class StudentBrowserComponent implements OnInit {
         this.busy = false
         console.log(val)
         this.paginator.page = val.page
-        this.paginator.itemsPerPage = val.itemsPerPage
+        this.paginator.itemsPerPage = val.size
         this.paginator.totalItems=val.totalItems
         this.paginator.pageCount=val.pageCount
         this.ELEMENT_DATA = val
@@ -69,5 +74,56 @@ export class StudentBrowserComponent implements OnInit {
     console.log(studentID);
     this.router.navigate([`/students/details`],{queryParams:{studentID:studentID}});
   }
+  getAdmin(){
+    this.router.navigate([`/admin/details`],{queryParams:{adminID:CurrentUser.id}});
+  }
+  regStudent(){
+    this.router.navigate([`/register`],{queryParams:{adminID:CurrentUser.id}});
+  }
 
+  openDialog(studentID:string) {
+    const dialogRef = this.dialog.open(DeleteUserComponent, {
+      width: 'fit-content',
+      data: {studID: studentID}
+    });
+
+    dialogRef.afterClosed().subscribe(val=>{
+      if(val)this.load();   
+    })
+    
+}
+delMet(studentID: string) {
+  this.studentManagementService.deleteStudents({id:studentID}).subscribe(val=>{
+    if (val) {
+      this.load();
+    }
+  })
+}
+}
+
+@Component({
+  selector: 'app-delete-user',
+  templateUrl: './delete-user.component.html',
+  styleUrls: ['./delete-user.component.css']
+})
+
+export class DeleteUserComponent implements OnInit {
+
+  studentID = '';
+  
+
+  constructor(public dialogRef: MatDialogRef<DeleteUserComponent>, private studentManagementService: StudentManagementService,
+    @Inject(MAT_DIALOG_DATA) public data: any,) {}
+
+    ngOnInit(): void {
+      this.studentID = this.data.studID;
+      //this.delMet = this.data.delMet;
+    }
+
+  onNO(): void {
+    this.dialogRef.close();
+  }
+  delMet(studentID: string) {
+    this.studentManagementService.deleteStudents({id:studentID})
+  }
 }

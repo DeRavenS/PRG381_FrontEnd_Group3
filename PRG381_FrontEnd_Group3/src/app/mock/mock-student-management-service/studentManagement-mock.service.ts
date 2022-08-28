@@ -3,7 +3,7 @@ import { concatMap, delay, Observable, of } from 'rxjs';
 import { IBRowsedStudent } from 'src/app/models/browsed-student';
 import { PagedResponse } from 'src/app/models/paged-response-interface';
 import { IDetialedStudent } from 'src/app/models/student-interface';
-import {IDeleteStudentRequest, IStudentBrowseRequest, IStudentDetailsRequest, IStudentManagementService, IUpdateStudentRequest } from 'src/app/services/student-browser/student-browser.service';
+import {IDeleteStudentRequest, IStudentBrowseRequest, IStudentDetailsRequest, IStudentManagementService } from 'src/app/services/student-browser/student-browser.service';
 import { getBrowsedBookingMock } from '../browsedStudentMock';
 import { getDetailedStudentMock } from '../detailedStudentMock';
 
@@ -36,12 +36,12 @@ export class StudentManagementMockService implements IStudentManagementService{
     let filteredItems: IBRowsedStudent[] = []
     let upperLimt:number
 
-    if (request.page*request.itemsPerPage+request.itemsPerPage>allItems.length) {
+    if (request.page*request.size+request.size>allItems.length) {
       upperLimt=allItems.length
     }
-    else upperLimt=request.page*request.itemsPerPage
+    else upperLimt=request.page*request.size
 
-    for (let i = Math.ceil(request.page*request.itemsPerPage-request.itemsPerPage); i < upperLimt; i++) {
+    for (let i = Math.ceil(request.page*request.size-request.size); i < upperLimt; i++) {
       filteredItems.push(allItems[i])
     }
 
@@ -49,11 +49,11 @@ export class StudentManagementMockService implements IStudentManagementService{
     // Search by transaction Reference
     
 
-    let pagecount=allItems.length/request.itemsPerPage;
+    let pagecount=allItems.length/request.size;
     return of<PagedResponse<IBRowsedStudent>>({
       items: filteredItems,
       page: request.page,
-      itemsPerPage:request.itemsPerPage,
+      size:request.size,
       totalItems: allItems.length,
       pageCount: pagecount,
     }).pipe(
@@ -73,7 +73,7 @@ studentDetails(request: IStudentDetailsRequest): Observable<IDetialedStudent> {
     )
 }
 
-updateStudent(request: IUpdateStudentRequest): Observable<Object> {
+updateStudent(request: IDetialedStudent): Observable<Object> {
     return of<object>(request)
 }
 }

@@ -1,14 +1,56 @@
 table {
     width: 100%;
+    box-shadow: none;
   }
   
   .container {
     min-width: fit-content;
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 50%;
+    border-radius: 5px;
+    margin: auto;
+    height: fit-content;
+    padding: 50px;
   }
+
+  .buttonCon {
+    min-width: fit-content;
+    max-width: 50%;
+    border-radius: 5px;
+    margin: auto;
+    height: fit-content;
+    padding: 20px 50px;
+    text-align: right;
+  }
+
+  .main-container {
+    border-radius: 5px;
+    margin: auto;
+    height: fit-content;
+    padding: 50px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .additionalBut {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: fit-content;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #416a59;
+    color: white;
+    text-align: right;
+}
   
+  .accordion {
+    width: 38%;
+    margin: auto;
+    text-align: center;
+}
+
   mat-spinner {
     margin-left: auto;
     margin-right: auto;
@@ -26,3 +68,15 @@ table {
     background-color: gainsboro;
     cursor: pointer;
   }
+
+  .deleteBut:hover{
+    color: red;
+  }
+
+  .infoBut:hover{
+    color:cornflowerblue;
+  }
+
+  body {
+    background-color: #e1eedd;
+}

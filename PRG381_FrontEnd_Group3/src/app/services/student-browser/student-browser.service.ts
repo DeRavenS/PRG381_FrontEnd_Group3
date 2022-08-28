@@ -12,15 +12,11 @@ export interface IStudentBrowseRequest extends IBrowseRequest{
 }
 
 export interface IDeleteStudentRequest{
-  studentID:number;
+  id:String;
 }
 
 export interface IStudentDetailsRequest{
   studentID: string;
-}
-
-export interface IUpdateStudentRequest {
-  students:IDetialedStudent[]
 }
 
 
@@ -29,7 +25,7 @@ export interface IStudentManagementService {
   getStudents(request:IStudentBrowseRequest):Observable<PagedResponse<IBRowsedStudent>>;
   deleteStudents(request:IDeleteStudentRequest):Observable<Object>;
   studentDetails(request:IStudentDetailsRequest):Observable<IDetialedStudent>;
-  updateStudent(request:IUpdateStudentRequest):Observable<Object>;
+  updateStudent(request:IDetialedStudent):Observable<Object>;
 }
 
 @Injectable({
@@ -48,7 +44,7 @@ export class StudentManagementService implements IStudentManagementService{
   }
   deleteStudents(request: IDeleteStudentRequest): Observable<Object>{
       return this.http.delete<object>(
-        this.API_URL, 
+        this.API_URL +"/delete", 
         {
           body:request
         })
@@ -56,12 +52,13 @@ export class StudentManagementService implements IStudentManagementService{
 
   studentDetails(request: IStudentDetailsRequest): Observable<IDetialedStudent> {
     let params = new HttpParams
-    params.set("studentID",request.studentID)
+    params=params.set("studentID",request.studentID)
+    console.log(params)
     return this.http.get<IDetialedStudent>(this.API_URL,{params:params})
   }
 
-  updateStudent(request: IUpdateStudentRequest): Observable<Object> {
-      return this.http.patch<Object>(this.API_URL,request)
+  updateStudent(request: IDetialedStudent): Observable<Object> {
+      return this.http.put<Object>(this.API_URL,request)
   }
 
 }

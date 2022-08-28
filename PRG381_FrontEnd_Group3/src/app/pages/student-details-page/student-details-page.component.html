@@ -6,20 +6,20 @@
         <mat-card-content class="jCentre">
                 <mat-form-field  appearance="outline" class="wFull" >
                     <mat-label >Student Number</mat-label>
-                    <input [disabled]="fieldDisabled" matInput [(ngModel)]="student.studentID">
-                </mat-form-field><br>
+                    <input disabled="true" matInput [(ngModel)]="student.studentID">
+                </mat-form-field>
                 <mat-form-field appearance="outline" class="wFull">
                     <mat-label>Name</mat-label>
                     <input [disabled]="fieldDisabled" matInput [(ngModel)]="student.studentName">
-                </mat-form-field><br>
+                </mat-form-field>
                 <mat-form-field appearance="outline" class="wFull">
                     <mat-label>E-Mail</mat-label>
                     <input [disabled]="fieldDisabled" matInput [(ngModel)]="student.studentEmail"> 
-                </mat-form-field><br>
+                </mat-form-field>
                 <mat-form-field appearance="outline" class="wFull">  
                     <mat-label >Address</mat-label>
                     <input [disabled]="fieldDisabled" matInput [(ngModel)]="student.studentAddress">
-                </mat-form-field><br>
+                </mat-form-field>
                 <mat-form-field appearance="outline" class="wFull">
                     <mat-label align="left">Courses</mat-label>
                     <mat-chip-list [disabled]="fieldDisabled" #courseList>

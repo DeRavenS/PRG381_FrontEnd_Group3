@@ -4,7 +4,8 @@ import { ActivatedRoute, Route } from '@angular/router';
 import { IDetialedStudent } from 'src/app/models/student-interface';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { IStudentDetailsRequest, IUpdateStudentRequest, StudentManagementService } from 'src/app/services/student-browser/student-browser.service';
+import { IStudentDetailsRequest, StudentManagementService } from 'src/app/services/student-browser/student-browser.service';
+import { IDetailedAdmin } from 'src/app/models/admin-interface';
 
 
 
@@ -56,8 +57,8 @@ export class StudentDetailsPageComponent implements OnInit {
 
 
   saveInfo(student:IDetialedStudent){
-    let req:IUpdateStudentRequest={students:[student]}
-    this.studentManagementService.updateStudent(req).subscribe(val=>{
+    console.log(student.courses)
+    this.studentManagementService.updateStudent(student).subscribe(val=>{
       if (val) {
         this.fieldDisabled = true;
       }

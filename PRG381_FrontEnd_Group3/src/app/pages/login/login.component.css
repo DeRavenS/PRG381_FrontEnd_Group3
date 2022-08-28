@@ -28,7 +28,9 @@ body {
 .registerLink {
     text-decoration: none;
     color: #416a59;
+    cursor: pointer;
 }
+
 
 mat-form-field {
     display: block;
