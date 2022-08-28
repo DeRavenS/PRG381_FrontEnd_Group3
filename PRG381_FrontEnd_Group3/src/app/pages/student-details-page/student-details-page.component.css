@@ -1,0 +1,77 @@
+.jCentre {
+    justify-content: center;
+    text-align: center;
+    display: block;
+}
+
+.wFull, input {
+    width: 100%;
+}
+
+.container {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: auto;
+  }
+
+mat-form-field{
+    margin-top: 10px;
+}
+
+.mat-card {
+    width: fit-content;
+    border-radius: 5px;
+    margin: auto;
+    height: fit-content;
+    padding: 50px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+body {
+    background-color: #e1eedd;
+}
+
+
+.mat-chip {
+    background-color: #e1eedd;
+    color: black;
+}
+
+.sBut {
+    border-radius: 2px;
+    width:fit-content;
+    text-align: center;
+    background-color: #416a59;
+    color: white;
+}
+
+.registerLink {
+    text-decoration: none;
+    color: #416a59;
+}
+
+mat-form-field {
+    display: block;
+    width: 100%;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    color: #39395f !important;
+   }
+
+  ::ng-deep.mat-form-field-outline-thick {
+   color: #39395f !important;
+  }
+
+  span {
+    display: block;
+    text-align: center;
+  }
+  

@@ -1,0 +1,24 @@
+<body>
+    <mat-card>
+        <mat-card-title style="text-align:center;">Login</mat-card-title><br>
+        <mat-card-content>
+            <form action="" method="post">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email address</mat-label>
+                        <input [(ngModel)]="loginRequest.email" type="email" name="userEmail" matInput placeholder="john@doe.com">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input [(ngModel)]="loginRequest.password" type="password" name="password" matInput placeholder="password" [type]="hide ? 'password' : 'text'">
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          </button>
+                    </mat-form-field>
+                    <button type="submit" class="loginBut" mat-flat-button (click)="login()">Login</button><br>
+                <span>Not registered? <a class="registerLink" routerLink="/register">Register Here</a></span>
+                <span>Want to reset your password? <a class="registerLink" (click)="openDialogReset()">Click here</a></span>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</body>
+

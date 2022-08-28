@@ -1,0 +1,35 @@
+<body>
+    <mat-card>
+        <mat-card-title style="text-align:center;">Register</mat-card-title><br>
+        <mat-card-content>
+            <form action="" method="post">
+                    <!--Student Name-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Full name</mat-label>
+                        <input [(ngModel)]="registerStudentRequest.studentName" type="text" name="studentName" matInput placeholder="John Doe">
+                    </mat-form-field>
+                    <!--Student Address-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Address</mat-label>
+                        <input [(ngModel)]="registerStudentRequest.studentAddress" type="text" name="studentAddress" matInput placeholder="50 Tamatie Ave, Pretoria">
+                    </mat-form-field>
+                    <!--Student Email Address-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email address</mat-label>
+                        <input [(ngModel)]="registerStudentRequest.studentEmail" type="email" name="studentEmail" matInput placeholder="john@doe.com">
+                    </mat-form-field>
+                    <!--Student Password-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input [(ngModel)]="registerStudentRequest.studentPassword" type="password" name="password" matInput placeholder="password" [type]="hide ? 'password' : 'text'">
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          </button>
+                    </mat-form-field>
+                    <button type="submit" class="loginBut" mat-flat-button (click)="registerUser()">Register</button><br>
+                <span>Already have an account? <a class="registerLink" routerLink="/login">Login Here</a></span>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</body>
+

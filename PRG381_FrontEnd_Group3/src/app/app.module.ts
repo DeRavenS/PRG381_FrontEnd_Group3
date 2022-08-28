@@ -4,11 +4,11 @@ import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BookingBrowserService } from './services/booking-browser/booking-browser.service';
-import { BookingbrowserMockService } from './mock/mock-booking-browser/bookingbrowser-mock.service';
-import { BookingBrowserComponent } from './pages/booking-browser/booking-browser.component';
+import { StudentManagementService } from './services/student-browser/student-browser.service';
+import { StudentManagementMockService } from './mock/mock-student-management-service/studentManagement-mock.service';
+import { StudentBrowserComponent, DeleteUserComponent } from './pages/student-browser/student-browser.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -23,7 +23,8 @@ import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
-import { MatDialogContent, MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
+import {MatExpansionModule} from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -31,12 +32,28 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { StudentDetailsPageComponent, DialogSaveUserComponent } from './pages/student-details-page/student-details-page.component';
+import { AdminDetailsPageComponent } from './pages/admin-details-page/admin-details-page.component';
+import { AdminService } from './services/admin-service/admin.service';
+import { MockAdminManagementService } from './mock/mock-admin-management-service/mock-admin-management.service';
+import { NewAdminDialogComponent } from './pages/admin-details-page/new-admin-dialog/new-admin-dialog.component';
+import { ResetPasswordDialogComponent } from './pages/login/reset-password-dialog/reset-password-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookingBrowserComponent
+    StudentBrowserComponent,
+    StudentDetailsPageComponent,
+    AdminDetailsPageComponent,
+    NewAdminDialogComponent,
+    LoginComponent,
+    RegisterComponent,
+    DialogSaveUserComponent,
+    DeleteUserComponent,
+    ResetPasswordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +81,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatBadgeModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule,
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [
-    {provide: BookingBrowserService,useClass: BookingbrowserMockService} 
+    {provide: StudentManagementService,useClass: StudentManagementService},
+    {provide: AdminService,useClass:AdminService}
   ],
   bootstrap: [AppComponent]
 })
